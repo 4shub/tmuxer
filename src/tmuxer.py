@@ -38,9 +38,14 @@ def processWindow(pane_data, current_pane, all_panes):
 
 def tmuxer():
     currentDirectory = os.getcwd()
-    configName = sys.argv[1] if 1 < len(sys.argv) else None
-    configURL = ''
+    configName = ''
 
+    if 1 > len(sys.argv):
+        configName = None
+    else:
+        configName = sys.argv[1]
+
+    configURL = ''
     noConfigNameDir = currentDirectory + '/tmuxer.yaml'
 
     if not configName and os.path.isfile(noConfigNameDir):
